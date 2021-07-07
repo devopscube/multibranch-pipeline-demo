@@ -15,7 +15,7 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
+                    branches: [[name: '*/master']], 
                     userRemoteConfigs: [[url: 'https://github.com/srinivas325/multibranch-pipeline-demo.git']]
                 ])
             }
