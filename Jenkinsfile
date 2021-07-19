@@ -61,6 +61,7 @@ pipeline {
 
                 sh """
                 echo "Deploying Code"
+                echo "deployment is done"
                 """
             }
         }
