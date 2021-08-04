@@ -26,6 +26,9 @@ pipeline {
 
         stage('Code Checkout') {
             steps {
+                sh """
+                 whoami
+                """
                 checkout([
                     $class: 'GitSCM', 
                     branches: [[name: '*/main']], 
