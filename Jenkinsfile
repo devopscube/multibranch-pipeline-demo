@@ -26,7 +26,7 @@ pipeline {
 
         stage('Code Checkout') {
             steps {
-                sh """
+                bat "echo""
                  whoami
                 """
                 checkout([
@@ -39,7 +39,7 @@ pipeline {
 
         stage(' Unit Testing') {
             steps {
-                sh """
+                bat """
                 echo "Running Unit Tests"
                 """
             }
@@ -47,7 +47,7 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                sh """
+                bat """
                 echo "Running Code Analysis"
                 """
             }
@@ -58,7 +58,7 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                sh """
+                bat """
                 echo "Building Artifact"
                 """
 
