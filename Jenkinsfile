@@ -18,7 +18,7 @@ pipeline {
         stage('Cleanup Workspace') {
             steps {
                 cleanWs()
-                sh """
+                bat """
                 echo "Cleaned Up Workspace For Project"
                 """
             }
@@ -26,6 +26,9 @@ pipeline {
 
         stage('Code Checkout') {
             steps {
+                bat "echo""
+                 whoami
+                """
                 checkout([
                     $class: 'GitSCM', 
                     branches: [[name: '*/main']], 
@@ -36,7 +39,7 @@ pipeline {
 
         stage(' Unit Testing') {
             steps {
-                sh """
+                bat """
                 echo "Running Unit Tests"
                 """
             }
@@ -44,7 +47,7 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                sh """
+                bat """
                 echo "Running Code Analysis"
                 """
             }
@@ -55,7 +58,7 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                sh """
+                bat """
                 echo "Building Artifact"
                 """
 
