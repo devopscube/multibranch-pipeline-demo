@@ -64,14 +64,11 @@ pipeline {
                 """
             }
         }
-        void gitTag(Version releaseVersion) {
-            sshagent(['devops_deploy_DEV']) {
-              shell 'git tag -d \$(git tag)'
-              shell 'git fetch --tags'
-              echo "New release version ${releaseVersion.normalVersion}"
-              shell "git tag -fa ${releaseVersion.normalVersion} -m 'Release version ${releaseVersion.normalVersion}'"
+        stage('build number'){
+            steps{
+                sh("git tag ${BUILD_NUMBER}")
             }
-        }
+        }            
     
     }   
 }
