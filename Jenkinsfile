@@ -66,7 +66,7 @@ pipeline {
         }
         stage('build number'){
             steps{
-                sh("git tag ${BUILD_NUMBER}")
+                sh "git tag build_${gitCommit}"
             }
         }            
     
