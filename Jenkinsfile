@@ -64,7 +64,7 @@ pipeline {
                 """
             }
         }
-        stage(‘Auto tagging’){ 
+        stage('Auto tagging'){ 
             
             steps {
                 
