@@ -3,7 +3,7 @@ branches:
   master:
     increment: None
     regex: master$
-    is-mainline: true
+    is-mainline: false
   develop:
     regex: develop$
     source-branches:
