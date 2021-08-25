@@ -5,7 +5,7 @@ branches:
     regex: master$
     is-mainline: true
   develop:
-    increment: None
+    increment: none
     regex: develop$
     is-mainline: true
     source-branches:
