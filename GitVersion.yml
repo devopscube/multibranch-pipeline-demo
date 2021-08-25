@@ -3,12 +3,11 @@ branches:
   master:
     increment: None
     regex: master$
-    is-mainline: false
+    is-mainline: true
   develop:
     regex: develop$
     source-branches:
     - master
-    is-mainline: true
   feature:
     increment: Minor
     regex: feature?[/-]
