@@ -56,7 +56,7 @@ pipeline {
 
         stage('Code Analysis') {
             when {
-                branch 'feature'
+                changeRequest()
             }
             steps {
                 sh """
