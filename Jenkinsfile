@@ -43,6 +43,21 @@ pipeline {
             }
         }
 
+        stage('Get GitVersion Number') {
+            steps {
+                sh "rm -Rf .git/gitversion_cache/"
+                sh "dotnet gitversion /output buildserver"
+                script {
+                     def props = readProperties file: 'gitversion.properties'
+                     //env.GitVersion_SemVer = props.GitVersion_SemVer
+                     //env.GitVersion_BranchName = props.GitVersion_BranchName
+                     //env.GitVersion_AssemblySemVer = props.GitVersion_AssemblySemVer
+                      env.GITTAG = props.GitVersion_MajorMinorPatch
+                      //env.GitVersion_Sha = props.GitVersion_Sha
+                }
+            }
+        }
+
         stage(' Unit Testing') {
             when {
                 branch 'master'
