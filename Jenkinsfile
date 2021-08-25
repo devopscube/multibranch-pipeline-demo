@@ -56,7 +56,7 @@ pipeline {
 
         stage('Code Analysis') {
             when {
-                changeRequest()
+                changeRequest target: 'develop'
             }
             steps {
                 sh """
