@@ -39,6 +39,7 @@ pipeline {
             steps {
                 sh """
                 echo $env.BRANCH_NAME
+                echo %GIT_BRANCH%
                 """
             }
         }
