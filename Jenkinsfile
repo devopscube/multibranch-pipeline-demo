@@ -39,7 +39,6 @@ pipeline {
             steps {
                 sh """
                 echo $env.BRANCH_NAME
-                echo %GIT_BRANCH%
                 """
             }
         }
@@ -57,7 +56,9 @@ pipeline {
 
         stage('Code Analysis') {
             when {
-                changeRequest target: 'develop'
+                expression {
+                    env.BRANCH_NAME.contains("feature/")
+                }
             }
             steps {
                 sh """
