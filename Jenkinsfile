@@ -35,6 +35,14 @@ pipeline {
             }
         }
 
+        stage('Echo Branch Name') {
+            steps {
+                sh """
+                echo $env.BRANCH_NAME
+                """
+            }
+        }
+
         stage(' Unit Testing') {
             when {
                 branch 'master'
