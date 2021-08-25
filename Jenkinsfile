@@ -7,6 +7,7 @@ pipeline {
     }
 
     options {
+        skipDefaultCheckout(true)
         buildDiscarder logRotator( 
                     daysToKeepStr: '16', 
                     numToKeepStr: '10'
@@ -28,8 +29,8 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
+                    branches: [[name: '*/master'], [name: '*/develop'], [name: '*/feature']], 
+                    userRemoteConfigs: [[url: 'https://github.com/rbullers/multibranch-pipeline-demo.git']]
                 ])
             }
         }
