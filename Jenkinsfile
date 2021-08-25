@@ -14,6 +14,10 @@ pipeline {
             )
     }
 
+    environment {
+        IGNORE_NORMALISATION_GIT_HEAD_MOVE = "1"
+    }
+    
     stages {
         
         stage('Cleanup Workspace') {
