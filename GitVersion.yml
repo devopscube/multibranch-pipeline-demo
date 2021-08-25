@@ -1,11 +1,13 @@
 mode: Mainline
 branches:
   master:
-    increment: None
+    increment: none
     regex: master$
     is-mainline: true
   develop:
+    increment: none
     regex: develop$
+    is-mainline: true
     source-branches:
     - master
   feature:
