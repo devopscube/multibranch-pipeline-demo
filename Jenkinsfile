@@ -14,6 +14,10 @@ pipeline {
             )
     }
 
+    environment {
+        IGNORE_NORMALISATION_GIT_HEAD_MOVE = "1"
+    }
+    
     stages {
         
         stage('Cleanup Workspace') {
@@ -43,6 +47,21 @@ pipeline {
             }
         }
 
+        stage('Get GitVersion Number') {
+            steps {
+                sh "rm -Rf .git/gitversion_cache/"
+                sh "dotnet gitversion /output buildserver"
+                script {
+                     def props = readProperties file: 'gitversion.properties'
+                     //env.GitVersion_SemVer = props.GitVersion_SemVer
+                     //env.GitVersion_BranchName = props.GitVersion_BranchName
+                     //env.GitVersion_AssemblySemVer = props.GitVersion_AssemblySemVer
+                      env.GITTAG = props.GitVersion_MajorMinorPatch
+                      //env.GitVersion_Sha = props.GitVersion_Sha
+                }
+            }
+        }
+
         stage(' Unit Testing') {
             when {
                 branch 'master'
@@ -56,7 +75,9 @@ pipeline {
 
         stage('Code Analysis') {
             when {
-                branch 'feature'
+                expression {
+                    env.BRANCH_NAME.contains("feature/")
+                }
             }
             steps {
                 sh """
