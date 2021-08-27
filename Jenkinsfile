@@ -16,6 +16,7 @@ pipeline {
 
     environment {
         IGNORE_NORMALISATION_GIT_HEAD_MOVE = "1"
+        MSTEAMS_HOOK = "https://bytespackcom.webhook.office.com/webhookb2/6e1c234c-bab4-4c99-8a7b-b1b6bde15c67@21b33349-b9d3-40ae-b11f-4b49d7948a21/JenkinsCI/b8cc96b2d7df46be9cc3ef05379aa7a5/df395072-2205-4106-b733-8d0dbdf9f69a"
     }
     
     stages {
@@ -101,5 +102,15 @@ pipeline {
             }
         }
 
+    }
+    post {
+        success {
+            office365ConnectorSend (
+            status: "Pipeline Status",
+            webhookUrl: "${MSTEAMS_HOOK}",
+            color: '00ff00',
+            message: "Test Successful: ${JOB_NAME} - ${BUILD_DISPLAY_NAME}<br>Pipeline duration: ${currentBuild.durationString}"
+            )
+        }
     }   
 }
