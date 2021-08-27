@@ -111,13 +111,13 @@ pipeline {
                 """
                 script{
                     env.CURL = readFile("log.txt")
-                    env.TEST = env.DEFAULT_CONTENT + env.CURL
                 }
             }
         }
     }
     post {
         always {
+            env.TEST = env.DEFAULT_CONTENT + env.CURL
             emailext (
                 body: "${TEST}",
                 mimeType: 'text/html',
