@@ -109,7 +109,7 @@ pipeline {
                 script {
                     env.CURL = sh (
                     returnStdout: true,
-                    script: ''' oldIFS=$IFS && IFS=$'\n' arr=($(<log.txt)) && IFS="$oldIFS" && printf '%s\n' "${arr[@]}" '''
+                    script: ' oldIFS="$IFS" '
                     
                      )
                      // sh '''
