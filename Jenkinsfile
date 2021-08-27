@@ -101,26 +101,14 @@ pipeline {
             }
             steps {
                 sh ''' 
-                curl https://dev01.hoststerling.com/hooks/hooks/test?token=6w2mzsTNu@rmi9Ds2z4WER4q6qfD -o log.txt
-                sed -i 's/\\x1b\\[[0-9;]*[a-zA-Z]//g' log.txt
-                sed -i 's/$/\\n/' log.txt
+                    curl https://dev01.hoststerling.com/hooks/hooks/test?token=6w2mzsTNu@rmi9Ds2z4WER4q6qfD -o log.txt
+                    sed -i 's/\\x1b\\[[0-9;]*[a-zA-Z]//g' log.txt
+                    sed -i 's/$/<br>/' log.txt
 
                 '''
-                script {
-                    env.CURL = sh (
-                    returnStdout: true,
-                    script: """ oldIFS='$IFS' """
-                    
-                     )
-                     // sh '''
-                      // curl https://dev01.hoststerling.com/hooks/hooks/test?token=6w2mzsTNu@rmi9Ds2z4WER4q6qfD -o log.txt && sed -i 's/\\x1b\\[[0-9;]*[a-zA-Z]//g' log.txt && sed -i 's/$/\\n/' log.txt
-                      // mapfile test < log.txt
-                       // '''
-                      echo env.CURL
-                       sh """
-                       echo "Deploying Code"
-                      """
-                }
+                sh """
+                    echo "Deploying Code"
+                """
             }
         }
     }
