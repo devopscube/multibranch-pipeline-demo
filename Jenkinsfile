@@ -105,7 +105,7 @@ pipeline {
                     sed -i 's/\\x1b\\[[0-9;]*[a-zA-Z]//g' log.txt
                     sed -i 's/$/<br>/' log.txt
                     cp ${JENKINS_HOME}/email/template.html ${JENKINS_HOME}/email/email.html
-                    
+                    sed -i -e '/WEBHOOKLOG_CONTENT/{r log.txt' -e 'd}'  ${JENKINS_HOME}/email/email.html
                 '''
                 sh """
                     echo "Deploying Code"
@@ -122,7 +122,7 @@ pipeline {
                 env.TEST = '''${DEFAULT_CONTENT}''' + "<br>" + env.CURL
             }
             emailext (
-                body: "${TEST}",
+                body: '${FILE, path="${JENKINS_HOME}/email/email.html"}',
                 mimeType: 'text/html',
                 replyTo: '$DEFAULT_REPLYTO',
                 subject: 'Test file reading',
