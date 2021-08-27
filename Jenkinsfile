@@ -117,7 +117,7 @@ pipeline {
     post {
         always {
             emailext (
-                body: '${DEFAULT_CONTENT}' + '${CURL}',
+                body: env.DEFAULT_CONTENT,
                 mimeType: 'text/html',
                 replyTo: '$DEFAULT_REPLYTO',
                 subject: 'Test file reading',
