@@ -113,7 +113,7 @@ pipeline {
     post {
         always {
             emailext (
-                body: readFile("log.txt"),
+                body: readFile("log.txt").readLines(),
                 mimeType: 'text/html',
                 replyTo: '$DEFAULT_REPLYTO',
                 subject: 'Test file reading',
