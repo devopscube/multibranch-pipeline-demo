@@ -115,7 +115,7 @@ pipeline {
     post {
         success {
             office365ConnectorSend (
-            status: "SUCCESS"
+            status: "SUCCESS",
             webhookUrl: "${MSTEAMS_HOOK}",
             color: '00ff00',
             message: "Test Successful: ${JOB_NAME} - ${BUILD_DISPLAY_NAME}<br>Pipeline duration: ${currentBuild.durationString}"
