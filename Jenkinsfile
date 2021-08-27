@@ -110,7 +110,7 @@ pipeline {
                     env.CURL = sh (
                     returnStdout: true,
                     script: ''' 
-                        oldIFS='$IFS'
+                        oldIFS=$IFS
                         IFS=$'\n' arr=($(<log.txt))
                         IFS="$oldIFS"
                         printf '%s\n' "${arr[@]}"
