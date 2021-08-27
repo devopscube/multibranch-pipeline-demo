@@ -19,10 +19,7 @@ pipeline {
         )
         office365ConnectorWebhooks([[
                     url: "${MSTEAMS_HOOK}",
-                    startNotification: true,
-                    notifySuccess(true),
-                    notifyFailure(true),
-                    timeout(30000)
+                    startNotification: true
             ]])
     }
 
