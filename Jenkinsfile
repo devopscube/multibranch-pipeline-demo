@@ -23,7 +23,7 @@ pipeline {
                     notifySuccess(true),
                     notifyFailure(true),
                     timeout(30000)
-            ]]
+            ]])
     }
 
     
