@@ -109,7 +109,7 @@ pipeline {
                     sed -i -e '/WEBHOOKLOG_CONTENT/{r log.txt' -e 'd}'  ${JENKINS_HOME}/email/email.html
                 '''
                 sh """
-                    echo "Deploying Codes"
+                    echo "Deploying Code"
                 """
                 script{
                     env.CURL = readFile("log.txt")
