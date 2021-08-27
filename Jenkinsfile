@@ -112,14 +112,13 @@ pipeline {
                 script{
                     env.CURL = readFile("log.txt")
                 }
-                echo "${env.CURL}"
             }
         }
     }
     post {
         always {
             emailext (
-                body: readFile("log.txt"),
+                body: "${env.CURL}",
                 mimeType: 'text/html',
                 replyTo: '$DEFAULT_REPLYTO',
                 subject: 'Test file reading',
