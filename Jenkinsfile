@@ -118,7 +118,7 @@ pipeline {
     post {
         always {
             script {
-                env.TEST = env.DEFAULT_CONTENT + env.CURL
+                env.TEST = "${DEFAULT_CONTENT}" + env.CURL
             }
             emailext (
                 body: "${TEST}",
