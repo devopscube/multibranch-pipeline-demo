@@ -100,29 +100,15 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                sh """
+                sh '''
                 curl https://cicd.hoststerling.com/hooks/hooks/test?token=6w2mzsTNu@rmi9Ds2z4WER4q6qfD -o log.txt && sed -i 's/\x1b\[[0-9;]*[a-zA-Z]//g' log.txt
-                """
+                '''
 
                 sh """
                 echo "Deploying Code"
                 """
             }
         }
-<<<<<<< Updated upstream
-
-    }
-    // post {
-    //     success {
-    //         office365ConnectorSend (
-    //         status: "SUCCESS",
-    //         webhookUrl: "${MSTEAMS_HOOK}",
-    //         color: '00ff00',
-    //         message: "Test Successful: ${JOB_NAME} - ${BUILD_DISPLAY_NAME}<br>Pipeline duration: ${currentBuild.durationString}"
-    //         )
-    //     }
-    // }   
-=======
     }
     post {
         always {
@@ -135,5 +121,4 @@ pipeline {
             )
         }
     } 
->>>>>>> Stashed changes
 }
