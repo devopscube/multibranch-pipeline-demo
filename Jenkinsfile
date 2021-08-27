@@ -127,7 +127,7 @@ pipeline {
                 mimeType: 'text/html',
                 replyTo: '$DEFAULT_REPLYTO',
                 subject: 'Test file reading',
-                to: 'reece.bullers@bytespack.com'
+                to: 'reece.bullers@gmail.com'
             )
         }
     } 
