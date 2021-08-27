@@ -105,7 +105,7 @@ pipeline {
                     sed -i 's/\\x1b\\[[0-9;]*[a-zA-Z]//g' log.txt
                     rm email.html -f
                     cp ${JENKINS_HOME}/email/template.html ${JENKINS_HOME}/email/email.html
-                    sed -i -e '/BUILDURL_ADDRESS/${RUN_DISPLAY_URL}'  ${JENKINS_HOME}/email/email.html
+                    sed -i -e "/BUILDURL_ADDRESS/$RUN_DISPLAY_URL"  ${JENKINS_HOME}/email/email.html
                     sed -i -e '/WEBHOOKLOG_CONTENT/{r log.txt' -e 'd}'  ${JENKINS_HOME}/email/email.html
                 '''
                 sh """
