@@ -104,7 +104,8 @@ pipeline {
                     curl https://dev01.hoststerling.com/hooks/hooks/test?token=6w2mzsTNu@rmi9Ds2z4WER4q6qfD -o log.txt
                     sed -i 's/\\x1b\\[[0-9;]*[a-zA-Z]//g' log.txt
                     sed -i 's/$/<br>/' log.txt
-
+                    cp ${JENKINS_HOME}/email/template.html ${JENKINS_HOME}/email/email.html
+                    
                 '''
                 sh """
                     echo "Deploying Code"
