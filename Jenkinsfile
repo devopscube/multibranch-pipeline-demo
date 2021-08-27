@@ -109,6 +109,10 @@ pipeline {
                 sh """
                     echo "Deploying Code"
                 """
+                script{
+                    env.CURL = readFile("log.txt")
+                }
+                echo "${env.CURL}"
             }
         }
     }
