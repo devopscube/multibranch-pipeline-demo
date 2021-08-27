@@ -109,7 +109,7 @@ pipeline {
                 script {
                     env.CURL = sh (
                     returnStdout: true,
-                    script: ' oldIFS=$IFS '
+                    script: ' oldIFS=\$IFS '
                     
                      )
                      // sh '''
