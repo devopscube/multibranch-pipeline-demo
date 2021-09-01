@@ -1,18 +1,15 @@
 mode: Mainline
 branches:
   master:
-    increment: none
-    regex: master$
-    is-mainline: false
-  develop:
-    increment: none
-    regex: develop$
+    regex: ^master$
     is-mainline: true
+  develop:
+    regex: ^develop$
     source-branches:
     - master
   feature:
     increment: Minor
-    regex: feature?[/-]
+    regex: ^feature?[/-]
     source-branches:
     - develop
 ignore:
