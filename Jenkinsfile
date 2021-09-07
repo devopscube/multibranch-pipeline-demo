@@ -28,8 +28,8 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
+                    branches: [[name: '*/Master']], 
+                    userRemoteConfigs: [[url: 'https://github.com/Midhunts1/multibranch-pipeline-demo.git']]
                 ])
             }
         }
