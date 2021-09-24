@@ -53,7 +53,7 @@ pipeline {
         stage('Build Deploy Code') {
             when {
                
-                branch 'feature'
+                branch 'develop'
             }
             steps {
                 sh """
