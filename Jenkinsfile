@@ -1,9 +1,7 @@
 pipeline {
 
     agent {
-        node {
-            label 'master'
-        }
+  
     }
 
     options {
@@ -29,24 +27,8 @@ pipeline {
                 checkout([
                     $class: 'GitSCM', 
                     branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/devopscube/multibranch-pipeline-demo.git']]
                 ])
-            }
-        }
-
-        stage(' Unit Testing') {
-            steps {
-                sh """
-                echo "Running Unit Tests"
-                """
-            }
-        }
-
-        stage('Code Analysis') {
-            steps {
-                sh """
-                echo "Running Code Analysis"
-                """
             }
         }
 
