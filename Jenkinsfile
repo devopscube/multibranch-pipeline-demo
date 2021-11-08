@@ -17,7 +17,7 @@ pipeline {
                 sh 'make deploy'
             }
         }
-        Stage('git tags') {
+        stage('git tags') {
             steps {
                 sh '''
                     git tag -a v3.1 -m 'this is for release version'
