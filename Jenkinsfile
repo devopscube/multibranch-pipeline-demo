@@ -3,18 +3,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'make package'
+                sh 'echo package'
             }
         }
         stage('Test') {
             steps {
-                sh 'make check'
+                sh 'echo check'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying only because this commit is tagged...'
-                sh 'make deploy'
+                sh 'echo deploy'
             }
         }
         stage('git tags') {
