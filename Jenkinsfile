@@ -24,7 +24,7 @@ pipeline {
                     git tag -a v3.1 -m 'this is for release version'
                     git config --global user.email 'akashkadao@gmail.com'
                     git config --global user.name 'akashkadao'
-                    git tags -l
+                    git tag 
                     git push origin v3.1'''
             }
         }        
