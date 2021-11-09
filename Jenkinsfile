@@ -18,7 +18,6 @@ pipeline {
             }
         }
         stage('git tags') {
-            when { branch 'develop' }
             environment { 
                 GIT_TAG = "jenkins-$BUILD_NUMBER"
             }
