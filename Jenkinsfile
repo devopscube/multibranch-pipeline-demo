@@ -35,6 +35,8 @@ pipeline {
                         export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
                         git push origin \$GIT_TAG
                      """)
+                    }
+                }
             }
         }        
     }
