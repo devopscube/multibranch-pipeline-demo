@@ -21,6 +21,7 @@ pipeline {
             when { branch 'develop' }
             environment { 
                 GIT_TAG = "jenkins-$BUILD_NUMBER"
+            }
             steps {
                 sh '''
                     git config --global user.email 'akashkadao@gmail.com'
@@ -35,7 +36,6 @@ pipeline {
                         export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
                         git push origin \$GIT_TAG
                      """)
-                    }
                 }
             }
         }        
