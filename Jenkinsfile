@@ -23,20 +23,12 @@ pipeline {
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG -m '[Jenkins CI] New Tag'
+                    git tag -a \$GIT_TAG -m 'New Tag New Build'
                     git tag
                     git config --global user.email 'akashkadao@gmail.com'
                     git config --global user.name 'akashkadao'
-                    
+                    git push origin \$GIT_TAG
                    '''             
-                sshagent(['my-ssh-credentials-id']) {
-                    sh("""
-                        #!/usr/bin/env bash
-                        set +x
-                        export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
-                        git push origin \$GIT_TAG
-                     """)
-                }
             }
         }        
     }
