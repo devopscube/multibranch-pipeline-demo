@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG -m 'New Tag New Build'
+                    git tag -a \$GIT_TAG -m 'New Tag New Build & New Build-Number'
                     git tag
                     git config --global user.email 'akashkadao@gmail.com'
                     git config --global user.name 'akashkadao'
