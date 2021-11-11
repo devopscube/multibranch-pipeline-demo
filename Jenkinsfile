@@ -25,7 +25,7 @@ pipeline {
                 sh '''
                     git tag -a \$GIT_TAG -m 'New Tag New Build & New Build-Number'
                     git tag
-                    git push origin \$GIT_TAG -uakashkadao -pakashkadao@1993
+                    git push origin \$GIT_TAG -u akashkadao -p akashkadao@1993
                    '''             
             }
         }        
