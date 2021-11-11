@@ -1,5 +1,5 @@
 pipeline {
-     properties([
+     options([
           pipelineTriggers([
                [$class: 'GenericTrigger',
                genericVariables: [
@@ -51,26 +51,26 @@ pipeline {
                     if (currentBuild.currentResult == 'SUCCESS') {
                     subject = "Released $tag in $repo_slug"
                     bodyText = """
-                    Hi there!!
+                         Hi there!!
     
-                    You pushed $tag in $clone_url and it is now released.
-                    Version $tag was built from $commit
+                         You pushed $tag in $clone_url and it is now released.
+                         Version $tag was built from $commit
     
-                    See job here: $BUILD_URL
-                    See log here: $BUILD_URL/consoleText
-                    """
-               } 
-                    else {
+                         See job here: $BUILD_URL
+                         See log here: $BUILD_URL/consoleText
+                         """
+                         } 
+                         else {
                     subject = "Failed to release $tag in $repo_slug"
                     bodyText = """
-                    Hi there!!
+                         Hi there!!
     
-                    You pushed $tag in $clone_url and the release failed (${currentBuild.currentResult}).
+                         You pushed $tag in $clone_url and the release failed (${currentBuild.currentResult}).
     
-                    See job here: $BUILD_URL
-                    See log here: $BUILD_URL/consoleText
-                    """
-               }
+                         See job here: $BUILD_URL
+                         See log here: $BUILD_URL/consoleText
+                         """
+                         }
              }
         }
     }
