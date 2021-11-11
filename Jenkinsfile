@@ -25,9 +25,7 @@ pipeline {
                 sh '''
                     git tag -a \$GIT_TAG -m 'New Tag New Build & New Build-Number'
                     git tag
-                    git config --global user.email 'akashkadao@gmail.com'
-                    git config --global user.name 'akashkadao'
-                    git push origin \$GIT_TAG -u akashkadao -p akashkadao@1993
+                    git push --tags origin \$GIT_TAG 
                    '''             
             }
         }        
