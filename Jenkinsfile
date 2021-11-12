@@ -25,7 +25,7 @@ pipeline {
                 sh '''
                     git tag -a \$GIT_TAG -m 'New Tag New Build & New Build-Number'
                     git tag
-                    git push origin tag \$GIT_TAG 
+                    git push origin :refs/tags/\$GIT_TAG 
                    '''             
             }
         }        
