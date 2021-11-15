@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG \$BUILD_VERSION-m 'New Tag, New Build & New Build-Number'
+                    git tag -a \$GIT_TAG \$BUILD_VERSION
                     git tag
                     git push origin develop \$GIT_TAG 
                    '''             
