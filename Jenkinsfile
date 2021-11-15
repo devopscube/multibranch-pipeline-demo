@@ -1,7 +1,7 @@
 pipeline { 
     agent any
     parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'develop', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'develop', name: 'TAG', type: 'PT_TAG'
     }
     stages {
         stage('Build') {
@@ -23,7 +23,7 @@ pipeline {
         stage('Example') {
             steps {
                 checkout([$class: 'GitSCM', 
-                          branches: [[name: "${params.BRANCH_TAG}"]], 
+                          branches: [[name: "${params.tAG}"]], 
                           doGenerateSubmoduleConfigurations: false, 
                           extensions: [], 
                           gitTool: 'Default', 
