@@ -1,5 +1,10 @@
 pipeline { 
     agent any
+    parameters {
+        gitParameter name: 'BRANCH_TAG', 
+                     type: 'PT_BRANCH_TAG',
+                     defaultValue: 'develop'
+    }
     stages {
         stage('Build') {
             steps {
@@ -17,17 +22,19 @@ pipeline {
                 sh 'echo deploy'
             }
         }
-        stage('git tags') {
-            environment { 
-                GIT_TAG = "Release_version-$BUILD_NUMBER"
-            }
+        stages {
+        stage('Example') {
             steps {
-                sh '''
-                    git tag -a \$GIT_TAG -m 'New Tag, New Build & New Build-Number'
-                    git tag
-                    git push origin \$GIT_TAG 
-                   '''             
+                checkout([$class: 'GitSCM', 
+                          branches: [[name: "${params.BRANCH_TAG}"]], 
+                          doGenerateSubmoduleConfigurations: false, 
+                          extensions: [], 
+                          gitTool: 'Default', 
+                          submoduleCfg: [], 
+                          userRemoteConfigs: [[url: 'https://github.com/akashkadao/multibranch-pipeline-demo.git']]
+                        ])
             }
-        }        
+        }
+    }
     }
 }
