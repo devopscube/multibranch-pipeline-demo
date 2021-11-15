@@ -1,7 +1,7 @@
 pipeline { 
     agent any
     parameters {
-        gitParameter name: 'BRANCH_TAG', 
+        gitParameter_name: 'BRANCH_TAG', 
                      type: 'PT_BRANCH_TAG',
                      defaultValue: 'develop'
     }
