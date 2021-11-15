@@ -1,9 +1,10 @@
 pipeline { 
     agent any
     parameters {
-        gitParameter_name: 'BRANCH_TAG', 
-                     type: 'PT_BRANCH_TAG',
-                     defaultValue: 'develop'
+        gitParameter 
+            name: 'BRANCH_TAG',            
+            type: 'PT_BRANCH_TAG',
+            defaultValue: 'develop'
     }
     stages {
         stage('Build') {
