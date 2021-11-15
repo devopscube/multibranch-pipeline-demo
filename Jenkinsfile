@@ -19,7 +19,7 @@ pipeline {
         }
         stage('git tags') {
             environment { 
-                GIT_TAG = 'Release_version-$BUILD_NUMBER', 
+                GIT_TAG = 'Release_version-$BUILD_NUMBER' 
                 BUILD_VERSION = 'version_lable-$BUILD_VERSION'
             }
             steps {
