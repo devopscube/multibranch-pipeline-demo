@@ -20,11 +20,11 @@ pipeline {
         stage('git tags') {
             environment { 
                 GIT_TAG = "Release_version-$BUILD_NUMBER" 
-             
+                BUILD_VERSION = "version-$BUILD_VERSION"
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG -m 'New Tag, New Build & New Build-Number'
+                    git tag -a \$GIT_TAG \$BUILD_VERSION-m 'New Tag, New Build & New Build-Number'
                     git tag
                     git push origin develop \$GIT_TAG 
                    '''             
