@@ -1,7 +1,7 @@
 pipeline { 
     agent any
     parameters {
-        gitParameter name: 'BRANCH_TAG', 
+        booleanParam: 'BRANCH_TAG', 
                      type: 'PT_BRANCH_TAG',
                      defaultValue: 'develop'
     }
@@ -22,7 +22,6 @@ pipeline {
                 sh 'echo deploy'
             }
         }
-        stages {
         stage('Example') {
             steps {
                 checkout([$class: 'GitSCM', 
@@ -35,6 +34,5 @@ pipeline {
                         ])
             }
         }
-    }
     }
 }
