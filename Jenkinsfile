@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG \$BUILD_ID 
+                    git tag -a \$GIT_TAG \$DATE 
                     git tag                    
                    '''             
             }
