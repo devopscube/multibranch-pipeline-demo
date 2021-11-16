@@ -21,7 +21,6 @@ pipeline {
             environment { 
                 GIT_TAG = "Release_version-$BUILD_TAG" 
                 BUILD_ID = "$BUILD_ID"
-                BUILD_NUMBER = "$BUILD_NUMBER"
                 JOB_NAME = "$JOB_NAME"
             }
             steps {
