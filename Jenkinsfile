@@ -19,13 +19,13 @@ pipeline {
         }
         stage('git tags') {
             environment { 
-                GIT_TAG = "$BUILD_TAG" 
+                GIT_TAG = "jenkins-Iccs-develop-$BUILD_NUMBER" 
             }
             steps {
                 sh '''
-                    git tag -a $GIT_TAG 
+                    git tag -a \$GIT_TAG 
                     git tag 
-                    git push origin $GIT_TAG 
+                    git push origin \$GIT_TAG 
                    '''             
             }
         }     
