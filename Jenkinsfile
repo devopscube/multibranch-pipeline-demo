@@ -23,9 +23,9 @@ pipeline {
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG 
+                    git tag -a $GIT_TAG 
                     git tag 
-                    git push origin \$GIT_TAG 
+                    git push origin $GIT_TAG 
                    '''             
             }
         }     
