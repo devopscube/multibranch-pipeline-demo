@@ -20,7 +20,7 @@ pipeline {
         stage('git tags') {
             environment { 
                 GIT_TAG = "$BUILD_TAG" 
-                BUILD_ID = "$BUILD_ID"
+                BUILD_ID = "$DATE"
             }
             steps {
                 sh '''
