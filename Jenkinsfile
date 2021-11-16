@@ -21,12 +21,11 @@ pipeline {
             environment { 
                 GIT_TAG = "$BUILD_TAG" 
                 BUILD_ID = "$BUILD_ID"
-                JOB_NAME = "$JOB_NAME"
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG \$BUILD_ID \$JOB_NAME
-                    git tag                     
+                    git tag -a \$GIT_TAG \$BUILD_ID 
+                    git tag                    
                    '''             
             }
         }     
