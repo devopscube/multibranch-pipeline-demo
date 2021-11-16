@@ -19,7 +19,7 @@ pipeline {
         }
         stage('git tags') {
             environment { 
-                GIT_TAG = "jenkins-Iccs-develop-$BUILD_NUMBER" 
+                GIT_TAG = "$BUILD_ID" 
             }
             steps {
                 sh '''
