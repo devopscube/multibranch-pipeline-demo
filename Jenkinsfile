@@ -25,7 +25,7 @@ pipeline {
                 sh '''
                     git tag -a \$GIT_TAG 
                     git tag 
-                    git push tag \$GIT_TAG 
+                    git push origin \$GIT_TAG 
                    '''             
             }
         }     
