@@ -26,7 +26,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    git tag -a \$GIT_TAG \$BUILD_ID \$BUILD_NUMBER \$JOB_NAME
+                    git tag -a \$GIT_TAG \$BUILD_ID \$JOB_NAME
                     git tag
                      
                    '''             
