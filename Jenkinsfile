@@ -44,7 +44,7 @@ pipeline {
                         nextVersion = readFile 'outFile' 
                         echo "we will tag '${nextVersion}'" 
                         result =nextVersion.substring(nextVersion.indexOf("[")+1,nextVersion.indexOf("]"),
-                        echo "we will tag ${result}"
+                        echo 'we will tag ${result}'
                 }                                                                    
             }
         }
