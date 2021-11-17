@@ -57,6 +57,14 @@ pipeline {
                         echo "we will tag '${nextVersion}'" 
                         result =nextVersion.substring(nextVersion.indexOf("[")+1,nextVersion.indexOf("]"))
                         echo "we will tag '${result}'"
+                    sh """
+                        curl -- data '{
+                        "tag_name": "${result}",
+                        "target_commitish": "release",
+                        "name": "${result}",
+                        "body": "Release of version ${result}",
+                        "draft": false, "prerelease": false}, \
+                    """
                 }                                                                    
             }
         }
