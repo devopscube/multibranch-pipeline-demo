@@ -23,7 +23,7 @@ pipeline {
                 script {
                     sh """ 
                         git fetch --all --tags
-                        version= \$(git describe --tags)
+                        version= \$(git describe --tags 'git tag')
                         #Version to get the latest tag 
                         A="\$(echo \$version|cut -d '.' -f1)"
                         B="\$(echo \$version|cut -d '.' -f2)"
