@@ -17,16 +17,16 @@ pipeline {
                 sh 'echo deploy'
             }
         }
-        stage(‘Auto_tagging’)
+        stage('Auto_tagging')
         { 
             steps {
                 script {
-                    sh “”” 
-                        version= $(git describe —tags `git rev-list — tags — max-count=1`)
+                    sh """ 
+                        version= \$(git describe —tags 'git rev-list — tags — max-count=1')
                         #Version to get the latest tag 
-                        A=”\$(echo \$version|cut -d ‘.’ -f1)”
-                        B=”\$(echo \$version|cut -d ‘.’ -f2)”
-                        C=”\$(echo \$version|cut -d ‘.’ -f3)”
+                        A="\$(echo \$version|cut -d '.' -f1)"
+                        B="\$(echo \$version|cut -d '.' -f2)"
+                        C="\$(echo \$version|cut -d '.' -f3)"
                         if [ \$C -gt 8 ]
                             then 
                         if [ \$B -gt 8 ]
@@ -40,11 +40,11 @@ pipeline {
                         else
                             C=\$((C+1))
                             fi
-                        echo “A[\$A.\$B.\$C]”>outFile “””
-                        nextVersion = readFile ‘outFile’ 
-                        echo “we will tag ‘${nextVersion}’” 
-                        result =nextVersion.substring(nextVersion.indexOf(“[“)+1,nextVersion.indexOf(“]”);
-                        echo “we will tag ‘${result}’”
+                        echo "A[\$A.\$B.\$C]">outFile """
+                        nextVersion = readFile 'outFile' 
+                        echo "we will tag '${nextVersion}'" 
+                        result =nextVersion.substring(nextVersion.indexOf("[")+1,nextVersion.indexOf("]");
+                        echo "we will tag '${result}'"
                 }                                                                    
             }
         }
