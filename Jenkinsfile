@@ -17,13 +17,24 @@ pipeline {
                 sh 'echo deploy'
             }
         }
+        stage('git tags') {
+            environment { 
+                GIT_TAG = "$BUILD_TAG" 
+            }
+            steps {
+                sh '''
+                    git tag \$GIT_TAG 
+                    git tag  
+                   '''             
+            }
+        }     
         stage('Auto_tagging')
         { 
             steps {
                 script {
                     sh """ 
                         git fetch --all --tags
-                        version= \$(git describe --tags 'git tag')
+                        version= \$(git describe --tags)
                         #Version to get the latest tag 
                         A="\$(echo \$version|cut -d '.' -f1)"
                         B="\$(echo \$version|cut -d '.' -f2)"
