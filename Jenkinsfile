@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     sh “”” 
-                        version= $(git describe — tags `git rev-list — tags — max-count=1`)
+                        version= $(git describe —tags `git rev-list — tags — max-count=1`)
                         #Version to get the latest tag 
                         A=”\$(echo \$version|cut -d ‘.’ -f1)”
                         B=”\$(echo \$version|cut -d ‘.’ -f2)”
