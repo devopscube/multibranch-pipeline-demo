@@ -17,7 +17,7 @@ pipeline {
                 sh 'echo deploy'
             }
         }
-        stage(‘Auto tagging’)
+        stage(‘Auto_tagging’)
         { 
             steps {
                 script {
