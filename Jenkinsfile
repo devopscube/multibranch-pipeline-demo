@@ -22,8 +22,8 @@ pipeline {
             steps {
                 script {
                     sh """ 
-                        git fetch --no-tags
-                        version= \$(git describe --tags 'git rev-list  --tags  --max-count=1')
+                        git fetch --all --tags
+                        version= \$(git describe --tags)
                         #Version to get the latest tag 
                         A="\$(echo \$version|cut -d '.' -f1)"
                         B="\$(echo \$version|cut -d '.' -f2)"
