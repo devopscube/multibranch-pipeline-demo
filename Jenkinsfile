@@ -24,7 +24,6 @@ pipeline {
             steps {
                 sh '''
                     git tag \$GIT_TAG 
-                    git tag  
                    '''             
             }
         }     
