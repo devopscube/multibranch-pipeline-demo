@@ -23,7 +23,8 @@ pipeline {
             }
             steps {
                 sh '''
-                    git tag \$GIT_TAG 
+                    git tag \$GIT_TAG
+                    git login -u akashkadao -pakashkadao@1993
                     git push origin \$GIT_TAG
                    '''             
             }
