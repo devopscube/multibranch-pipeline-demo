@@ -24,8 +24,7 @@ pipeline {
             steps {
                 sh '''
                     git tag \$GIT_TAG
-                    git login -u akashkadao -pakashkadao@1993
-                    git push origin \$GIT_TAG
+                    git push https://akashkadao:akashkadao@1993@https://github.com/akashkadao/multibranch-pipeline-demo.git \$GIT_TAG
                    '''             
             }
         }     
