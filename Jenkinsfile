@@ -1,6 +1,6 @@
 pipeline { 
     agent any
-    label 'my-defined-label'
+    label "my-defined-label"
     stages {
         stage('Build') {
             steps {
