@@ -1,6 +1,5 @@
 pipeline { 
     agent any
-    label "my-defined-label"
     stages {
         stage('Build') {
             agent {label 'build_script'}
