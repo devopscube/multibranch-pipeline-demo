@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo package'
-                sh 'echo build version ${$NEW_VERSION}'
+                echo "build version ${$NEW_VERSION}"
             }
         }
         stage('Test') {
