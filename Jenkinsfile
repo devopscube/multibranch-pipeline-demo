@@ -1,19 +1,19 @@
 pipeline { 
     agent any
     environment {
-        NEW_VERSION = '1.2.3'
+        NEW_VERSION = '1.2.0'
     }
     stages {
         stage('Build') {
             steps {
                 sh 'echo package'
-                sh "echo build version ${$NEW_VERSION}"
+                sh 'echo build version ${$NEW_VERSION}'
             }
         }
         stage('Test') {
             steps {
                 sh 'echo check'
-                sh "echo Test version ${$NEW_VERSION}"
+                sh 'echo Test version ${$NEW_VERSION}'
             }
         }
         stage('Deploy') {
