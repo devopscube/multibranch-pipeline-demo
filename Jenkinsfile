@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh '''
                     git tag \$GIT_TAG
-					Git push orgin \$GIT_TAG
+		    git push orgin \$GIT_TAG
                    '''             
             }
         }     
