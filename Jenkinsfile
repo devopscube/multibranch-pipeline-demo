@@ -19,7 +19,7 @@ pipeline {
         }
         stage('git tags') {
             environment { 
-                GIT_TAG = "Jenkins_build -$BUILD_NUMBER" 
+                GIT_TAG = "Jenkins_build-$BUILD_NUMBER" 
             }
             steps {
                 sh '''
