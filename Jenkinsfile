@@ -25,9 +25,7 @@ pipeline {
                 GIT_TAG = "Jenkins_build-$BUILD_NUMBER" 
             }
             steps {
-                withCredentials([
-                        usernamePassword(credentials: 'gitcreds', usernameVariable: USER, passwordVariable: PWD)    
-		]) {
+                withCredentials([string(credentialsID: 'gitcreds', variable: 'USER')]) {
 			sh "git tag \$GIT_TAG"
 		    	sh "git push origin \$GIT_TAG ${USER} ${PWD}"    
 		}
