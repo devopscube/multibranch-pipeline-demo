@@ -28,10 +28,8 @@ pipeline {
                 withCredentials([
                         usernamePassword(credentials: 'gitcreds', usernameVariable: USER, passwordVariable: PWD)    
 		]) {
-			sh '''
-                    	git tag \$GIT_TAG
-		    	git push origin \$GIT_TAG
-                   '''     
+			sh "git tag \$GIT_TAG"
+		    	sh "git push origin \$GIT_TAG ${USER} ${PWD}"    
 		}
             }
         }     
