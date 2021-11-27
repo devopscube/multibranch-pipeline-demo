@@ -24,7 +24,7 @@ pipeline {
             steps {
                 git branch: 'develop',
                         credentialsId: 'gitcreds',
-                        url: 'https://github.com/akashkadao/multibranch-pipeline-demo.git' 
+                        url: 'https://github.com/akashkadao/multibranch-pipeline-demo/tree/develop' 
                 sh '''
                     git tag \$GIT_TAG
 		    git push origin \$GIT_TAG
