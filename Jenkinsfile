@@ -1,5 +1,8 @@
 pipeline { 
     agent any
+    environment {
+         SERVER_CEDENTIALS = credentials('gitcreds')
+    }
     stages {
         stage('Build') {
             steps {
@@ -22,9 +25,13 @@ pipeline {
                 GIT_TAG = "Jenkins_build-$BUILD_NUMBER" 
             }
             steps {
-                git branch: 'develop',
-                        credentialsId: 'cred-github',
-                        url: 'https://github.com/akashkadao/multibranch-pipeline-demo' 
+                withCredentials([
+                        usernamePassword(credentials: 'gitcreds', usernameVariable: USER, passwordVariable: PWD)    
+		]) {
+			git config --global user.name "akashkadao"
+			git config --global user.email "akashkadao@gmail.com"
+		}
+
                 sh '''
                     git tag \$GIT_TAG
 		    git push origin \$GIT_TAG
