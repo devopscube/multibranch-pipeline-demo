@@ -27,7 +27,7 @@ pipeline {
                         url: 'https://github.com/akashkadao/multibranch-pipeline-demo.git' 
                 sh '''
                     git tag \$GIT_TAG
-		    git push orgin \$GIT_TAG
+		    git push origin \$GIT_TAG
                    '''             
             }
         }     
