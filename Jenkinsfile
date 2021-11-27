@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 git branch: 'develop',
-                        credentialsId: 'gitcreds',
+                        credentialsId: 'cred-github',
                         url: 'https://github.com/akashkadao/multibranch-pipeline-demo' 
                 sh '''
                     git tag \$GIT_TAG
