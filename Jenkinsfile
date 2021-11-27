@@ -28,14 +28,11 @@ pipeline {
                 withCredentials([
                         usernamePassword(credentials: 'gitcreds', usernameVariable: USER, passwordVariable: PWD)    
 		]) {
-			git config --global user.name "akashkadao"
-			git config --global user.email "akashkadao@gmail.com"
+			sh '''
+                    	git tag \$GIT_TAG
+		    	git push origin \$GIT_TAG
+                   '''     
 		}
-
-                sh '''
-                    git tag \$GIT_TAG
-		    git push origin \$GIT_TAG
-                   '''             
             }
         }     
     }
