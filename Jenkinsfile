@@ -16,11 +16,6 @@ pipeline {
                 echo 'Deploying only because this commit is tagged...'
                 sh 'echo deploy'
             }
-        }
-	stage('Checkout') {
-	    steps {
-       		git branch: 'develop', credentialsId: 'gitcreds', url: 'https://github.com/akashkadao/multibranch-pipeline-demo.git'
-		}
 	}
    
         stage('git tags') {
@@ -28,11 +23,12 @@ pipeline {
                 GIT_TAG = "Jenkins_build-$BUILD_NUMBER" 
             }
 	    steps {
-		sh """
-		    git tag \$GIT_TAG"
-	    	    git push origin \$GIT_TAG
-		    """    
-            }
+		withCredentials([usernamePassword(credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+			
+    			sh("git tag -a \$GIT_TAG")
+    			sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/akashkadao/multibranch-pipeline-demo.git --tags')
+		}
+	    }
         }     
     }
 }
