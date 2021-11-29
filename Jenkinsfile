@@ -27,8 +27,7 @@ pipeline {
 			git checkout develop
 			git tag
 			git tag -a \$GIT_TAG -m "this is release version"
-			git remote add origin https://github.com/akashkadao/multibranch-pipeline-demo.git
-			git push --set-upstream origin 
+			git push --set-upstream origin \$GIT_TAG
 			'''
 		}
 	    }
