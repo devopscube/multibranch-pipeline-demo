@@ -21,7 +21,6 @@ pipeline {
 	    steps {
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
     			sh '''
-			git remote add origin 'git@github.com/akashkadao/multibranch-pipeline-demo.git'
 			git tag -a some_tag12 -m 'Jenkins'
     			git -c core.askpass=true push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo.git some_tag12
 			'''
