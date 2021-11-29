@@ -22,7 +22,9 @@ pipeline {
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
     			sh '''
 			git checkout develop
-			git tags			
+			git tag
+			git tag -a v1.4 -m "my version 1.4"
+			git push origin v1.4
 			'''
 		}
 	    }
