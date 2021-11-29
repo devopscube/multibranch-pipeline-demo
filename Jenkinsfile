@@ -24,7 +24,7 @@ pipeline {
 			git checkout develop
 			git tag
 			git tag -a v1.5 -m "my version 1.5"
-			git push origin develop --tags
+			git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo.git --tags
 			'''
 		}
 	    }
