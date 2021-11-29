@@ -21,8 +21,8 @@ pipeline {
 	    steps {
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
     			sh '''
-			git tag -a some_tag10 -m 'Jenkins'
-    			git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo.git some_tag10
+			git tag -a some_tag11 -m 'Jenkins'
+    			sh ("git -c core.askpass=true push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo.git some_tag11")
 			'''
 		}
 	    }
