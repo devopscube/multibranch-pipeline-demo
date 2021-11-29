@@ -24,10 +24,10 @@ pipeline {
 	    steps {
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
     			sh '''
-			git checkout develop
-			git tag
-			git tag -a \$GIT_TAG -m "this is release version"
-			git push --set-upstream origin \$GIT_TAG
+			sh "git checkout develop"
+			sh "git tag"
+			sh "git tag " + versionLabel
+			sh "git push --set-upstream origin"
 			'''
 		}
 	    }
