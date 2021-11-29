@@ -25,7 +25,7 @@ pipeline {
 			git tag
 			git tag -a v1.6 -m "my version 1.6"
 			git remote add origin https://github.com/akashkadao/multibranch-pipeline-demo.git
-			git push --set-upstream origin master
+			git push --set-upstream origin develop
 			'''
 		}
 	    }
