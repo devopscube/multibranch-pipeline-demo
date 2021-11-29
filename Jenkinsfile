@@ -19,10 +19,8 @@ pipeline {
 	}  
         stage('git tags') {
 	    steps {
-		withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-			sh("git config --global user.email "akashkadao@gmail.com"")
-			sh("git config --global user.name "akashkadao"")
-    			sh("git tag -a some_tag5 -m 'Jenkins'")
+		withCredentials([usernamePassword(credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+    			sh("git tag -a some_tag6 -m 'Jenkins'")
     			sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo --tags')
 		}
 	    }
