@@ -23,7 +23,7 @@ pipeline {
     			sh '''
 			git checkout develop
 			git tag
-			git tag -a v1.5 -m "my version 1.5"
+			git tag -a v1.6 -m "my version 1.6"
 			git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo.git --tags
 			'''
 		}
