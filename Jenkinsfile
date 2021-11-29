@@ -20,8 +20,8 @@ pipeline {
         stage('git tags') {
 	    steps {
 		withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {		
-    			sh("git tag -a some_tag3 -m 'Jenkins'")
-    			sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@multibranch-pipeline-demo.git --tags')
+    			sh("git tag -a some_tag4 -m 'Jenkins'")
+    			sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo --tags')
 		}
 	    }
         }     
