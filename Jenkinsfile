@@ -25,8 +25,8 @@ pipeline {
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
     			sh "git checkout develop"
 			sh "git tag"
-			sh "git tag " + versionLabel
-			sh "git push --set-upstream origin"
+			sh "git tag \$GIT_TAG"
+			sh "git push --set-upstream origin \$GIT_TAG"
 			
 		}
 	    }
