@@ -22,7 +22,7 @@ pipeline {
 		withCredentials([usernamePassword(credentialsId: 'gitcreds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
     			sh '''
 			git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo.git
-			git tag -a some_tag7 -m 'Jenkins'
+			git tag -a some_tag8 -m 'Jenkins'
     			git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/akashkadao/multibranch-pipeline-demo.git --tags
 			'''
 		}
