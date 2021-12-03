@@ -27,7 +27,6 @@ pipeline {
 			sh "git push origin \$GIT_TAG"
 			
 		}
-	    }
-        }     
+	    }     
     }
 }
