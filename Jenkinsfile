@@ -22,7 +22,8 @@ pipeline {
                 GIT_TAG = "Release_version-$BUILD_NUMBER"
 		}
 	    steps {
-			sh "git tag"
+		    checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-cred', url: 'https://github.com/akashkadao/multibranch-pipeline-demo.git']]])
+		    	sh "git tag"
 			sh "git tag \$GIT_TAG"
 			sh "git push origin \$GIT_TAG"
 			
