@@ -19,7 +19,7 @@ pipeline {
 	}  
         stage('git tags') {
 		environment { 
-                GIT_TAG = "Release_version-$BUILD_NUMBER"
+                GIT_TAG = "VersionNumber (versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')"
 		}
 	    steps {
 		    checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-cred', url: 'git@github.com:akashkadao/multibranch-pipeline-demo.git']]])
