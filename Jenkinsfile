@@ -19,13 +19,13 @@ pipeline {
 	}  
         stage('git tags') {
 		environment { 
-                GIT_TAG = "release-$BUILD_TAG"
+                GIT_TAG = "release-$BUILD_NUMBER"
 		}
 	    steps {
 		    checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-cred', url: 'git@github.com:akashkadao/multibranch-pipeline-demo.git']]])
 		    	sh "git tag"
-			sh "git tag \$GIT_TAG"
-			sh "git push origin \$GIT_TAG"
+			sh "git tag "\GIT_TAG $GIT_TAG""
+			sh "git push origin "\GIT_TAG $GIT_TAG""
 			
 		}
 	    }     
