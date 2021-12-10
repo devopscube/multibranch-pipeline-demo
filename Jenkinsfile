@@ -1,69 +1,33 @@
-pipeline {
-
-    agent {
-        node {
-            label 'master'
-        }
-    }
-
-    options {
-        buildDiscarder logRotator( 
-                    daysToKeepStr: '16', 
-                    numToKeepStr: '10'
-            )
-    }
-
+pipeline { 
+    agent any
     stages {
-        
-        stage('Cleanup Workspace') {
+        stage('Build') {
             steps {
-                cleanWs()
-                sh """
-                echo "Cleaned Up Workspace For Project"
-                """
+                sh 'echo package'
             }
         }
-
-        stage('Code Checkout') {
+        stage('Test') {
             steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
+                sh 'echo check'
             }
         }
-
-        stage(' Unit Testing') {
+        stage('Deploy') {
             steps {
-                sh """
-                echo "Running Unit Tests"
-                """
+                echo 'Deploying only because this commit is tagged...'
+                sh 'echo deploy'
             }
-        }
-
-        stage('Code Analysis') {
-            steps {
-                sh """
-                echo "Running Code Analysis"
-                """
-            }
-        }
-
-        stage('Build Deploy Code') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                sh """
-                echo "Building Artifact"
-                """
-
-                sh """
-                echo "Deploying Code"
-                """
-            }
-        }
-
-    }   
+	}  
+        stage('git tags') {
+		environment { 
+                GIT_TAG = "release-$BUILD_NUMBER"
+		}
+	    steps {
+		    checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-cred', url: 'git@github.com:akashkadao/multibranch-pipeline-demo.git']]])
+		    	sh "git tag"
+			sh "git tag GIT_TAG $GIT_TAG"
+			sh "git push origin GIT_TAG $GIT_TAG"
+			
+		}
+	    }     
+    }
 }
