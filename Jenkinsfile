@@ -1,11 +1,7 @@
 pipeline {
 
-    agent {
-        node {
-            label 'master'
-        }
-    }
-
+ agent any
+    
     options {
         buildDiscarder logRotator( 
                     daysToKeepStr: '17', 
