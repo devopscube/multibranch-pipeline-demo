@@ -5,7 +5,7 @@ agent any
     options {
         buildDiscarder logRotator( 
                     daysToKeepStr: '17', 
-                    numToKeepStr: '10'
+                    numToKeepStr: '11'
             )
     }
 
