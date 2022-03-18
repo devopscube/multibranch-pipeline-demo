@@ -8,6 +8,7 @@ pipeline {
             {
                 script {
                         echo "INFO: Build Stage"
+                        sleep 60
                     }
             }
         }
