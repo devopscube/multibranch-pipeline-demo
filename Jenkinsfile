@@ -36,7 +36,7 @@ pipeline {
 
         stage(' Unit Testing') {
             steps {
-                sh """
+                powershell """
                 echo "Running Unit Tests"
                 """
             }
@@ -44,7 +44,7 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                sh """
+                powershell """
                 echo "Running Code Analysis"
                 """
             }
@@ -55,11 +55,11 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                sh """
+                powershell """
                 echo "Building Artifact"
                 """
 
-                sh """
+                powershell """
                 echo "Deploying Code"
                 """
             }
