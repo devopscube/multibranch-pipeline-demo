@@ -20,13 +20,6 @@ pipeline {
                                     name: 'PARAMETER_01'
 
                                 ),
-                                choice(
-
-                                    choices2: ['ONE', 'TWO'],
-
-                                    name: 'PARAMETER_02'
-
-                                ),
 
                                 booleanParam(
 
