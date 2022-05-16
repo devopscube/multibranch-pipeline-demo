@@ -15,9 +15,9 @@ pipeline {
 
                                 choice(
 
-                                    choices: ['ONE', 'TWO'], 
+                                    choices: ['ONE', 'TWO', 'TREE'], 
 
-                                    name: 'PARAMETER_01'
+                                    name: 'PARAMETER_02'
 
                                 ),
 
@@ -27,21 +27,7 @@ pipeline {
 
                                     description: '', 
 
-                                    name: 'BOOLEAN'
-
-                                ),
-
-                                text(
-
-                                    defaultValue: '''
-
-                                    this is a multi-line 
-
-                                    string parameter example
-
-                                    ''', 
-
-                                     name: 'MULTI-LINE-STRING'
+                                    name: 'BOOLEAN2'
 
                                 ),
 
@@ -49,7 +35,7 @@ pipeline {
 
                                     defaultValue: 'scriptcrunch', 
 
-                                    name: 'STRING-PARAMETER', 
+                                    name: 'STRING-PARAMETER2', 
 
                                     trim: true
 
