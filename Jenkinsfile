@@ -33,7 +33,7 @@ agent any
         stage(' Unit Testing') {
             steps {
                 sh """
-                echo "Running Unit Tests"
+                echo "Running the Unit Tests"
                 """
             }
         }
