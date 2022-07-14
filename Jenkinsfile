@@ -2,7 +2,7 @@ pipeline {
 
     agent {
         node {
-            label 'master'
+            label 'java-docker-slave'
         }
     }
 
