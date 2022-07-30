@@ -1,15 +1,11 @@
 pipeline {
 
-    agent {
-        node {
-            label 'master'
-        }
-    }
-
+agent any
+  
     options {
         buildDiscarder logRotator( 
-                    daysToKeepStr: '16', 
-                    numToKeepStr: '10'
+                    daysToKeepStr: '17', 
+                    numToKeepStr: '11'
             )
     }
 
@@ -37,7 +33,7 @@ pipeline {
         stage(' Unit Testing') {
             steps {
                 sh """
-                echo "Running Unit Tests"
+                echo "Running the Unit Tests"
                 """
             }
         }
@@ -56,7 +52,7 @@ pipeline {
             }
             steps {
                 sh """
-                echo "Building Artifact"
+                echo "Building Artifact - Feature Branch"
                 """
 
                 sh """
