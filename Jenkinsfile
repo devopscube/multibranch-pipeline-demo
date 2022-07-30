@@ -52,7 +52,7 @@ agent any
             }
             steps {
                 sh """
-                echo "Building Artifact"
+                echo "Building Artifact - Feature Branch"
                 """
 
                 sh """
