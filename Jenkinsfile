@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Code Checkout') {
+        stage('Code Checkout is done by Seda for testing purpose') {
             steps {
                 checkout([
                     $class: 'GitSCM', 
