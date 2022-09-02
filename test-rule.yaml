@@ -1,0 +1,11 @@
+groups:
+- name: import
+  rules:
+  - alert: ImportStilSyncingAfterLongTime
+    annotations:
+      message: "import {{ $labels.import_id }} for cluster {{ $labels.cluster_id }} still syncing after long time."
+    expr: |
+      dbaas_import_syncing_import_since_created_seconds > 3600 * 24 * 2 # 2 days
+    labels:
+      severity: critical
+      component: lightning
