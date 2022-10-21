@@ -27,6 +27,8 @@ pipeline {
                     branches: [[name: '*/master']], 
                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
                 ])
+                sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
+                echo $version
             }
         }
 
