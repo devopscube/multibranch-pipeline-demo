@@ -1,6 +1,10 @@
 pipeline {
 
-    agent any
+    agent any 
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH' 
+    }
+    
 
     options {
         buildDiscarder logRotator( 
@@ -22,11 +26,13 @@ pipeline {
 
         stage('Code Checkout') {
             steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/${BRANCH}']], 
-                    userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
-                ])
+                
+                git branch: "${params.BRANCH}", credentialsId: "", url: "https://github.com/ch680351034/multibranch-pipeline-demo.git"
+//                 checkout([
+//                     $class: 'GitSCM', 
+//                     branches: [[name: '*/${BRANCH}']], 
+//                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
+//                 ])
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
                 sh 'cat version.json'
