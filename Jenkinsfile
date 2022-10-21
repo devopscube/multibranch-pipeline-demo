@@ -1,10 +1,6 @@
 pipeline {
 
-    agent {
-        node {
-            label 'master'
-        }
-    }
+    agent any
 
     options {
         buildDiscarder logRotator( 
@@ -28,9 +24,20 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
+                    branches: [[name: '*/develop']], 
+                    userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
                 ])
+               //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
+                sh 'gitversion > version.json'
+                sh 'cat version.json'
+               // sh "version=$(jq -r '.MajorMinorPatch' version.json)"
+                script {
+                    def props = readJSON file: 'version.json'
+                    println "${props.SemVer}"
+                    currentBuild.displayName = props.SemVer
+                }
+                
+                //echo $version
             }
         }
 
