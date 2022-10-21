@@ -30,7 +30,8 @@ pipeline {
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
                 sh 'cat version.json'
-                sh "jq -r '.MajorMinorPatch' version.json"
+                sh "currentBuild.displayName=$(jq -r '.MajorMinorPatch' version.json)"
+                
                 //echo $version
             }
         }
