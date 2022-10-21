@@ -28,7 +28,7 @@ pipeline {
                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
                 ])
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
-                sh 'version=$(gitversion) > version.json'
+                sh 'gitversion > version.json'
                 sh 'cat version.json'
                 //sh 'jq -r '.MajorMinorPatch' $version'
                 //echo $version
