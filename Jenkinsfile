@@ -29,7 +29,7 @@ pipeline {
                 ])
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'version=$(gitversion)'
-                sh 'echo $version | jq'
+                sh 'jq -r '.MajorMinorPatch' $version'
                 //echo $version
             }
         }
