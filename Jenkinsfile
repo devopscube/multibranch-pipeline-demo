@@ -33,8 +33,8 @@ pipeline {
                // sh "version=$(jq -r '.MajorMinorPatch' version.json)"
                 script {
                     def props = readJSON file: 'version.json'
-                    println "${props['MajorMinorPatch']}"
-                    currentBuild.displayName = props.MajorMinorPatch
+                    println "${props.SemVer}"
+                    currentBuild.displayName = props.SemVer
                 }
                 
                 //echo $version
