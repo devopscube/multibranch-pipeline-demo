@@ -27,7 +27,7 @@ pipeline {
         stage('Code Checkout') {
             steps {
                 
-                git branch: "${params.BRANCH}", credentialsId: "", url: "https://github.com/ch680351034/multibranch-pipeline-demo.git"
+                git branch: '${BRANCH}', url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git'
 //                 checkout([
 //                     $class: 'GitSCM', 
 //                     branches: [[name: '*/${BRANCH}']], 
