@@ -30,9 +30,10 @@ pipeline {
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
                 sh 'cat version.json'
-                sh "version=$(jq -r '.MajorMinorPatch' version.json)"
+               // sh "version=$(jq -r '.MajorMinorPatch' version.json)"
                 script {
-                    currentBuild.displayName = version
+                    def props = readProperties file: 'version.json'
+                    currentBuild.displayName = props.MajorMinorPatch
                 }
                 
                 //echo $version
