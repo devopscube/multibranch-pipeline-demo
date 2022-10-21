@@ -27,12 +27,12 @@ parameters {
         stage('Code Checkout') {
             steps {
                 
-                git branch: '${BRANCH}', url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git'
-//                 checkout([
-//                     $class: 'GitSCM', 
-//                     branches: [[name: '*/${BRANCH}']], 
-//                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
-//                 ])
+//                 git branch: '${BRANCH}', url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git'
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: "${params.BRANCH}"]], 
+                    userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
+                ])
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
                 sh 'cat version.json'
