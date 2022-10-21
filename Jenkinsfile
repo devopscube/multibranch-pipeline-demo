@@ -30,7 +30,7 @@ parameters {
 //                 git branch: '${BRANCH}', url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git'
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: "master"]], 
+                    branches: [[name: "{params.BRANCH}"]], 
                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
                 ])
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
