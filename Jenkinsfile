@@ -24,7 +24,7 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/master']], 
+                    branches: [[name: '*/${BRANCH}']], 
                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]
                 ])
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
