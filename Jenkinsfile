@@ -1,9 +1,9 @@
 pipeline {
 
     agent any 
-    parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH' 
-    }
+parameters {
+  gitParameter branch: '', branchFilter: '.*', defaultValue: 'origin/master', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition'
+}
     
 
     options {
