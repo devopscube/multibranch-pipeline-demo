@@ -1,10 +1,11 @@
 pipeline {
 
-    agent {
-        node {
-            label 'master'
-        }
-    }
+    agent any 
+parameters {
+  gitParameter branch: '', branchFilter: '.*', defaultValue: 'origin/master', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition', useRepository: 'https://github.com/ch680351034/multibranch-pipeline-demo.git'
+}
+
+    
 
     options {
         buildDiscarder logRotator( 
@@ -26,11 +27,19 @@ pipeline {
 
         stage('Code Checkout') {
             steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
+                
+              checkout([$class: 'GitSCM', branches: [[name: '${BRANCH}']], extensions: [[$class: 'WipeWorkspace'], [$class: 'GitLFSPull']], userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]])
+               //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
+                sh 'gitversion > version.json'
+                sh 'cat version.json'
+               // sh "version=$(jq -r '.MajorMinorPatch' version.json)"
+                script {
+                    def props = readJSON file: 'version.json'
+                    println "${props.SemVer}"
+                    currentBuild.displayName = props.SemVer
+                }
+                
+                //echo $version
             }
         }
 
