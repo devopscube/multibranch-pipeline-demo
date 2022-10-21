@@ -2,8 +2,9 @@ pipeline {
 
     agent any 
 parameters {
-  gitParameter branch: '', branchFilter: '.*', defaultValue: 'master', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition'
+  gitParameter branch: '', branchFilter: '.*', defaultValue: 'origin/master', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition', useRepository: 'https://github.com/ch680351034/multibranch-pipeline-demo.git'
 }
+
     
 
     options {
