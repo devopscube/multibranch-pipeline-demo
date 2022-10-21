@@ -22,7 +22,7 @@ branches:
     tracks-release-branches: true
     is-release-branch: false
     is-mainline: false
-  main:
+  master:
     mode: ContinuousDeployment
     regex: "[origin/]*(main)[/-]*"
     increment: Major
