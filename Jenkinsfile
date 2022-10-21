@@ -33,6 +33,7 @@ pipeline {
                // sh "version=$(jq -r '.MajorMinorPatch' version.json)"
                 script {
                     def props = readProperties file: 'version.json'
+                    println "${props.MajorMinorPatch}"
                     currentBuild.displayName = props.MajorMinorPatch
                 }
                 
