@@ -18,7 +18,7 @@ pipeline {
         stage('Cleanup Workspace') {
             steps {
                 cleanWs()
-                bat """
+                sh """
                 echo "Cleaned Up Workspace For Project"
                 """
             }
@@ -36,7 +36,7 @@ pipeline {
 
         stage(' Unit Testing') {
             steps {
-                bat """
+                sh """
                 echo "Running Unit Tests"
                 """
             }
@@ -44,7 +44,7 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                bat """
+                sh """
                 echo "Running Code Analysis"
                 """
             }
@@ -55,11 +55,11 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                bat """
+                sh """
                 echo "Building Artifact"
                 """
 
-                bat """
+                sh """
                 echo "Deploying Code"
                 """
             }
