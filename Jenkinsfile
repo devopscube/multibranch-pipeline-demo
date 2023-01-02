@@ -19,7 +19,7 @@ pipeline {
             steps {
                 cleanWs()
                 sh """
-                echo "Cleaned Up Workspace For Project for Siji"
+                echo "Cleaned Up Workspace For Project for Siji-123"
                 """
             }
         }
@@ -45,7 +45,7 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 sh """
-                echo "Running Code Analysis for Siji"
+                echo "Running Code Analysis for Siji-123"
                 """
             }
         }
