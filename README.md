@@ -2,6 +2,5 @@
 Jenkins Multibranch Pipeline Example Repo
 Edited
 Edited
-Edited
-Edited
+
 Edited
