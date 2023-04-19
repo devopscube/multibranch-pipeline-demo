@@ -1,69 +1,47 @@
-pipeline {
+pipeline{
 
-    agent {
-        node {
-            label 'master'
-        }
-    }
+	agent any
 
-    options {
-        buildDiscarder logRotator( 
-                    daysToKeepStr: '16', 
-                    numToKeepStr: '10'
-            )
-    }
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
 
-    stages {
-        
-        stage('Cleanup Workspace') {
-            steps {
-                cleanWs()
-                sh """
-                echo "Cleaned Up Workspace For Project"
-                """
-            }
-        }
+	stages {
+	    
+	    stage('gitclone') {
 
-        stage('Code Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
-            }
-        }
+			steps {
+				git 'https://github.com/shazforiot/nodeapp_test.git'
+			}
+		}
 
-        stage(' Unit Testing') {
-            steps {
-                sh """
-                echo "Running Unit Tests"
-                """
-            }
-        }
+		stage('Build') {
 
-        stage('Code Analysis') {
-            steps {
-                sh """
-                echo "Running Code Analysis"
-                """
-            }
-        }
+			steps {
+			bat script:'docker build -t priyalava/nodeapp_test:latest .'
+			}
+		}
 
-        stage('Build Deploy Code') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                sh """
-                echo "Building Artifact"
-                """
+		stage('Login') {
 
-                sh """
-                echo "Deploying Code"
-                """
-            }
-        }
+			steps {
+			bat script:'docker login -u priyalava -p Nandini@1234'
 
-    }   
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+			bat script:'docker push priyalava/nodeapp_test:latest'
+			}
+		}
+	}
+
+	post {
+		always {
+		bat script:'docker logout'
+		}
+	}
+
 }
