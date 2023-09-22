@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     def myValue = "Hello, Jenkins!"
-                    echo "My value is: ${myValue}"
+                    echo "My value is in develop-test branch: ${myValue}"
                 }
             }
         }
