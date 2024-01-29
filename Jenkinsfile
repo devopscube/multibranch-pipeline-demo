@@ -2,7 +2,7 @@ pipeline {
 
     agent {
         node {
-            label 'master'
+            label 'linux'
         }
     }
 
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 cleanWs()
                 sh """
-                echo "Cleaned Up Workspace For Project branch 'Morning' "
+                echo "Cleaned Up Workspace For Project"
                 """
             }
         }
