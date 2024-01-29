@@ -1,69 +1,35 @@
 pipeline {
-
-    agent {
-        node {
-            label 'linux'
-        }
-    }
-
-    options {
-        buildDiscarder logRotator( 
-                    daysToKeepStr: '16', 
-                    numToKeepStr: '10'
-            )
-    }
+    agent any
 
     stages {
-        
         stage('Cleanup Workspace') {
             steps {
-                cleanWs()
-                sh """
-                echo "Cleaned Up Workspace For Project"
-                """
+                echo "Cleaning up workspace..."
             }
         }
 
         stage('Code Checkout') {
             steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
+                echo "Checking out code from the repository..."
             }
         }
 
-        stage(' Unit Testing') {
+        stage('Unit Testing') {
             steps {
-                sh """
-                echo "Running Unit Tests"
-                """
+                echo "Running unit tests..."
             }
         }
 
         stage('Code Analysis') {
             steps {
-                sh """
-                echo "Running Code Analysis"
-                """
+                echo "Running code analysis..."
             }
         }
 
         stage('Build Deploy Code') {
-            when {
-                branch 'develop'
-            }
             steps {
-                sh """
-                echo "Building Artifact"
-                """
-
-                sh """
-                echo "Deploying Code"
-                """
+                echo "Building and deploying code..."
             }
         }
-
-    }   
+    }
 }
